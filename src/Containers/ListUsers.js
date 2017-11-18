@@ -3,12 +3,9 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 import SimpleBox from '../Components/SimpleBox';
 import { logout } from '../Actions/UserActions';
-import PreviewPicture from './PreviewPicture';
-
 class ListUsers extends Component {
   renderUsers() {
     const { userData, uid } = this.props;
-    console.log(userData);
     return _.map(_.filter(userData, (user, key) => {
       return key !== uid;
     }), (user, key) => {
@@ -17,7 +14,6 @@ class ListUsers extends Component {
           <div className="card-body text-center">
             {user.fname} {user.lname}
           </div>
-          <PreviewPicture pictureUrl={user.picture}/>
         </SimpleBox>
       );
     });

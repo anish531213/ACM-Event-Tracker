@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import ErrorAlert from '../Components/ErrorAlert';
 import { Field, reduxForm } from 'redux-form';
 import { email, required } from '../Helpers/ReduxFormValidation';
-
+import Header from '../Containers/Header';
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -41,6 +41,7 @@ class Login extends Component {
     const { handleSubmit } = this.props;
     return (
       <div>
+        <Header loggedIn={false}/>
         <SimpleBox title="Sign in">
           <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
             <div className="card-body">

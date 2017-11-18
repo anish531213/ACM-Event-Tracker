@@ -51,16 +51,14 @@ export function logout() {
   return dispatch => auth.signOut();
 }
 
-export function createAccount(data, picture) {
+export function createAccount(data) {
   const { fname, lname, email, password, image } = data;
   return dispatch => auth.createUserWithEmailAndPassword(email, password).then((user) => {
     if (user !== null) {
-      storage.child(`profile/${picture.name}/${new Date().getTime()}`).put(image[0]).then((snapshot) => {
         database.ref('users').child(user.uid).set({
           fname,
           lname,
-          picture: snapshot.metadata.downloadURLs[0]
-        });
+          isAdmin: false,
       });
     }
   });

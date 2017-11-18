@@ -10,6 +10,7 @@ import Login from './Containers/Login';
 import CreateAccount from './Containers/CreateAccount';
 import LoadingComponent from './Containers/LoadingComponent';
 import ListUsers from './Containers/ListUsers';
+import Home from './Containers/Home';
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 
 ReactDOM.render(
@@ -19,7 +20,7 @@ ReactDOM.render(
         <Switch>
           <Route path="/CreateAccount" component={CreateAccount}/>
           <Route path="/Login" component={Login}/>
-          <Route path="/" component={ListUsers}/>
+          <Route exact path="/" component={Home}/>
         </Switch>
       </LoadingComponent>
     </BrowserRouter>

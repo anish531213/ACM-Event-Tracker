@@ -1,11 +1,11 @@
 import * as firebase from 'firebase';
 const config = {
-  apiKey: "AIzaSyBCw_Px68EFyzY2eZPegF1I1uRMjq_XONw",
-  authDomain: "acoolmessageboard.firebaseapp.com",
-  databaseURL: "https://acoolmessageboard.firebaseio.com",
-  projectId: "acoolmessageboard",
-  storageBucket: "acoolmessageboard.appspot.com",
-  messagingSenderId: "410302103395"
+	apiKey: "AIzaSyCbINkjV9E6gcMTyKoNKzjuFx7QNjrJ6OM",
+	authDomain: "acm-event-tracker.firebaseapp.com",
+	databaseURL: "https://acm-event-tracker.firebaseio.com",
+	projectId: "acm-event-tracker",
+	storageBucket: "acm-event-tracker.appspot.com",
+	messagingSenderId: "872526494413"
 };
 firebase.initializeApp(config);
 export const database = firebase.database();

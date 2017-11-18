@@ -6,8 +6,7 @@ import { createAccount } from '../Actions/UserActions';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { email, required } from '../Helpers/ReduxFormValidation';
-import ImageField from '../Components/ImageField';
-
+import Header from '../Containers/Header';
 class CreateAccount extends Component {
   constructor(props) {
     super(props);
@@ -21,12 +20,14 @@ class CreateAccount extends Component {
 
   onSubmit(data) {
     this.props.createAccount(data, this.state);
+    this.props.history.push('/');
   }
 
   render() {
     const { handleSubmit } = this.props;
     return (
       <div>
+        <Header loggedIn={false}/>
         <SimpleBox title="Create Account">
           <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
             <div className="card-body">
@@ -61,12 +62,6 @@ class CreateAccount extends Component {
                 validate={required}
                 required={true}
                 type="password"
-              />
-              <Field
-                name="image"
-                label="Profile Picture"
-                component={ImageField}
-                required={true}
               />
               <FooterFormButton submitLabel="Create Account" otherLabel="Go Back"
                                 goToLink="/Login" {...this.props}
