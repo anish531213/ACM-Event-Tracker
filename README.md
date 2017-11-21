@@ -1,5 +1,10 @@
 # ACM Event Tracker
 
+# How to Install
+
+* Clone repository with: ``` git clone git@github.com:Dcampb007/ACM-Event-Tracker.git ```
+* Run npm install
+* Run npm start 
 ## Things to work on:
 * Fix log out button from redirecting to login page. should go to home page.
 * Fix AddEvent forum to use a text area for the description.
