@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { getUser, getDbUsers } from '../Actions/UserActions';
+import { getUser, getDbUsers, getEvents } from '../Actions/UserActions';
 import Loading from '../Components/Loading';
 import { auth } from '../Firebase';
 
 class LoadingComponent extends Component {
   componentWillMount() {
-    const { userLoading, dbUserLoading } = this.props;
+    const { userLoading, dbUserLoading, dbEventsLoading } = this.props;
     if (userLoading === undefined) {
       this.props.getUser();
     }
     if (dbUserLoading === undefined) {
       this.props.getDbUsers();
+    }
+    if (dbEventsLoading === undefined) {
+      this.props.getEvents();
     }
   }
 
@@ -38,8 +41,9 @@ function mapStateToProps(state) {
   return {
     userLoading: state.loading.user,
     dbUserLoading: state.loading.dbUser,
+    dbEventsLoading: state.loading.dbEvents,
     user: state.user
   };
 }
 
-export default withRouter(connect(mapStateToProps, { getUser, getDbUsers })(LoadingComponent));
+export default withRouter(connect(mapStateToProps, { getUser, getDbUsers, getEvents })(LoadingComponent));

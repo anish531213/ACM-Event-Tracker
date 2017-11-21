@@ -4,6 +4,9 @@ export const GET_USER = 'get_user';
 export const GET_DB_USERS = 'get_db_users';
 export const USER_STATUS = 'user_status';
 export const USER_DB_STATUS = 'user_db_status';
+export const GET_EVENTS = 'event_db_status';
+export const EVENTS_DB_STATUS = 'event_status';
+export const ADD_EVENT_STATUS = 'add_event_status';
 
 export function getUser() {
   return dispatch => {
@@ -41,6 +44,29 @@ export function getDbUsers() {
       });
     });
   };
+}
+export function getEvents() {
+  return dispatch => {
+    dispatch({
+      type: EVENTS_DB_STATUS,
+      payload: true
+    });
+    database.ref('events').on('value', db => {
+      dispatch({
+        type: GET_EVENTS,
+        payload: db.val()
+      });
+      dispatch({
+        type: EVENTS_DB_STATUS,
+        payload: false
+      });
+    });
+  };
+}
+/* this doesn't work */
+export function addEvent(data, uid) {
+  return dispatch => database.ref('users').child(uid).update(
+  {data});
 }
 
 export function login(email, password) {

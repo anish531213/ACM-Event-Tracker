@@ -9,8 +9,11 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Login from './Containers/Login';
 import CreateAccount from './Containers/CreateAccount';
 import LoadingComponent from './Containers/LoadingComponent';
+import AuthenticatedComponent from './Containers/AuthenticatedComponent';
 import ListUsers from './Containers/ListUsers';
 import Home from './Containers/Home';
+import Events from './Containers/Events';
+import AddEvent from './Containers/AddEvent';
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 
 ReactDOM.render(
@@ -21,6 +24,10 @@ ReactDOM.render(
           <Route path="/CreateAccount" component={CreateAccount}/>
           <Route path="/Login" component={Login}/>
           <Route exact path="/" component={Home}/>
+          <AuthenticatedComponent>
+            <Route path="/Events" component={Events}/>
+            <Route path="/AddEvent" component={AddEvent}/>
+          </AuthenticatedComponent>
         </Switch>
       </LoadingComponent>
     </BrowserRouter>
