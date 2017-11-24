@@ -3,9 +3,8 @@ import React from 'react';
 export class Card extends React.Component {
     constructor(state) {
         super(state);
+        this.state = {events: "all"};
     }
-
-    
 
     render() {
         const divClass = {
@@ -33,28 +32,40 @@ export class Card extends React.Component {
             return align;
         }
 
+        function toggleButton(e) {
+            console.log(e);
+        }
+       
 
-
-        return (
-            <div className="row" style={divClass}>
-    
-                <div className="col-md-8 offset-md-2 card card-inverse" style={cardBackground}>
-                    <div className="card-header text-center">
-                        <h4 className="card-title"> {this.props.event.title}</h4>
-                   
-                    </div>
-                    <div className="card-body body-text" style={body_text_style}>
-                        <p className='card-text'> 
-                            <a style={buildAlignCSS('left')}> {this.props.event.location}  </a>
-                            <a style={buildAlignCSS('right')}> {this.props.event.date}</a>
-                        </p>
-                        <br />
-                        
-                        <p className="card-text"> {this.props.event.description}</p>
+        if (this.state.events == "all") {
+            return (
+                <div className="row" id="DivElement" onClick={this.divClick} style={divClass} data={this.props}>
+        
+                    <div className="col-md-8 offset-md-2 card card-inverse" style={cardBackground}>
+                        <div className="card-header text-center">
+                            <h4 className="card-title"> {this.props.event.title}</h4>
+                       
+                        </div>
+                        <div className="card-body body-text" style={body_text_style}>
+                            <p className='card-text'> 
+                                <a style={buildAlignCSS('left')}> {this.props.event.location}  </a>
+                                <a style={buildAlignCSS('right')}> {this.props.event.date}</a>
+                            </p>
+                            <br />
+                            
+                            <p className="card-text"> {this.props.event.description}</p>
+                        </div>
+                        <div>
+                            <button type="button"  style={buildAlignCSS('right')} className="btn btn-danger" data-toggle="button" onClick={toggleButton} aria-pressed="false" autocomplete="off">
+                            RSVP
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
-        );
+            );
+        }
+        
+        
         
 
     }
